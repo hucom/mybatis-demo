@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="lazyLoadingEnabled" value="true" />
+		<setting name="aggressiveLazyLoading" value="false" />
+	</settings>
+	<typeAliases>
+		<typeAlias alias="DRUID" type="com.yuer.util.DruidDataSourceFactory" />
+	</typeAliases>
+	<environments default="h2">
+		<environment id="derby">
+			<transactionManager type="JDBC" />
+			<dataSource type="DRUID">
+				<property name="url" value="jdbc:derby:data/helloDB" />
+				<property name="initialSize" value="2" />
+				<property name="minIdle" value="4" />
+				<property name="removeAbandoned" value="true" />
+				<property name="poolPreparedStatements" value="true" />
+				<property name="validationQuery" value="values 1" />
+				<property name="filters" value="stat" />
+			</dataSource>
+		</environment>
+		<environment id="h2">
+			<transactionManager type="JDBC" />
+			<dataSource type="DRUID">
+				<property name="driverClassName" value="org.h2.Driver" />
+				<property name="url"
+					value="jdbc:h2:file:db/helloDB;IFEXISTS=TRUE;CIPHER=XTEA;FILE_LOCK=SOCKET" />
+				<property name="username" value="admin" />
+				<property name="password" value="admin" />
+				<!-- <property name="initialSize" value="2"/> -->
+				<!-- <property name="minIdle" value="4"/> -->
+				<property name="removeAbandoned" value="true" />
+				<property name="poolPreparedStatements" value="true" />
+				<property name="validationQuery" value="select 1" />
+				<property name="filters" value="stat" />
+			</dataSource>
+		</environment>
+	</environments>
+</configuration>
