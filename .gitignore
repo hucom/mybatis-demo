@@ -5,6 +5,7 @@
 /.settings
 /.idea
 /logs
+/bin
 
 .project
 .classpath
